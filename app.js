@@ -24,7 +24,7 @@ function wordBreak(s, start, end, dp) {
         return 1;
     }
 
-    for (let i = start + 1; i < end; i++) {
+    for (let i = start; i < end; i++) {
         // if the subproblem is seen for the first time
         if (dp[start][i] == -1) {
             dp[start][i] = wordBreak(s, start, i, dp);
@@ -44,9 +44,18 @@ function wordBreak(s, start, end, dp) {
     return 0;
 }
 
-let string = 'heishappy'
-let result = ''
-let wb = wordBreak(string, 0, string.length);
+let testStrings = [
+    'coffeebreak',
+    'hibye',
+    'bigfriend',
+    'dsdss'
+]
+let result
 
-// if wordbreak is ok, print he result
-console.log(wb ? result : "can't separate")
+testStrings.forEach(str => {
+    result = ''
+    let wb = wordBreak(str, 0, str.length);
+    // if wordbreak is ok, print he result
+    console.log(wb ? result : "can't separate")
+})
+
